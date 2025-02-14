@@ -34,14 +34,14 @@
         }
         .envelope-container {
             position: relative;
-            width: 200px;
-            height: 180px;
+            width: 250px;
+            height: 200px;
             margin: 100px auto 0;
         }
         .envelope {
             position: absolute;
-            width: 200px;
-            height: 120px;
+            width: 250px;
+            height: 150px;
             background: #ff6666;
             border-radius: 10px;
             bottom: 0;
@@ -50,21 +50,21 @@
         }
         .flap {
             position: absolute;
-            top: -60px;
+            top: -75px;
             left: 0;
             width: 0;
             height: 0;
-            border-left: 100px solid transparent;
-            border-right: 100px solid transparent;
-            border-bottom: 60px solid #ff6666;
+            border-left: 125px solid transparent;
+            border-right: 125px solid transparent;
+            border-bottom: 75px solid #ff6666;
             z-index: 3;
         }
         .letter {
             position: absolute;
             bottom: 0;
             left: 10px;
-            width: 180px;
-            height: 100px;
+            width: 230px;
+            height: 120px;
             background: white;
             border-radius: 5px;
             text-align: center;
@@ -81,16 +81,51 @@
         .envelope-container:hover .letter {
             transform: translateY(-20px);
         }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            background: #d6336c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        button:hover {
+            background: #a61a44;
+        }
+        #no-button {
+            position: relative;
+        }
     </style>
 </head>
 <body>
     <div class="envelope-container">
         <div class="flap"></div>
         <div class="envelope"></div>
-        <div class="letter">Karen, ¿quieres ser mi San Valentín?</div>
+        <div class="letter">Karen, ¿quieres ser mi San Valentín?
+            <div class="buttons">
+                <button onclick="sayYes()">Sí</button>
+                <button id="no-button" onclick="runAway()">No</button>
+            </div>
+        </div>
     </div>
     
     <script>
+        function sayYes() {
+            alert("¡Sabía que dirías que sí! Eres la mejor novia del mundo, te amo ;)");
+        }
+        function runAway() {
+            let noButton = document.getElementById("no-button");
+            let randomX = Math.random() * (window.innerWidth - 100);
+            let randomY = Math.random() * (window.innerHeight - 100);
+            noButton.style.position = "absolute";
+            noButton.style.left = `${randomX}px`;
+            noButton.style.top = `${randomY}px`;
+        }
         function createHeart() {
             const heart = document.createElement("div");
             heart.classList.add("heart-animation");
@@ -106,6 +141,7 @@
     </script>
 </body>
 </html>
+
 
 
 
