@@ -41,6 +41,7 @@
             cursor: pointer;
             border-radius: 5px;
             font-size: 18px;
+            transition: all 0.3s ease;
         }
         button:hover {
             background: #a61a44;
@@ -63,15 +64,45 @@
                 opacity: 0;
             }
         }
+        .envelope {
+            position: relative;
+            width: 200px;
+            height: 150px;
+            margin: 20px auto;
+            background: #ff6666;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .letter {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #d6336c;
+            transition: transform 2s ease;
+        }
+        .envelope:hover .letter {
+            transform: translateY(-100%);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="heart">❤️</div>
         <h1>¿Quieres ser mi San Valentín?</h1>
+        <div class="envelope">
+            <div class="letter">Mi bebe, ¿quieres ser mi San Valentín?</div>
+        </div>
         <div class="buttons">
-            <button onclick="alert('¡Sabía que dirías que sí! 💖')">Sí</button>
-            <button onclick="alert('¡Oh no! 💔 Tal vez la próxima vez.')">No</button>
+            <button id="yes-button" onclick="alert('¡Sabía que dirías que sí! 💖')">Sí</button>
+            <button id="no-button" onclick="makeYesBigger()">No</button>
         </div>
     </div>
     
@@ -89,6 +120,13 @@
         }
         
         setInterval(createHeart, 300);
+        
+        function makeYesBigger() {
+            let yesButton = document.getElementById("yes-button");
+            let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentSize + 5) + "px";
+            yesButton.style.padding = (parseInt(yesButton.style.padding) + 5) + "px";
+        }
     </script>
 </body>
 </html>
